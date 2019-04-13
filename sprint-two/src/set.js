@@ -13,7 +13,7 @@ setPrototype.add = function(item) {
 
 // A .contains() method, takes any string and returns a boolean reflecting whether it can be found in the set
 setPrototype.contains = function(item) {
-  if (this._storage.includes(item)) { return true }
+  if (this._storage.includes(item)) { return true; }
   return false;
 };
 
