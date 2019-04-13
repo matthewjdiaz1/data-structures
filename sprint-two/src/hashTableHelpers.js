@@ -15,10 +15,15 @@ var LimitedArray = function(limit) {
   var storage = [];
 
   var limitedArray = {};
+  // input - index of value
+  // output - bucket that tuples go into
   limitedArray.get = function(index) {
     checkLimit(index);
     return storage[index];
   };
+  // input - index, value
+  // output - none
+  // fills bucket with tuple
   limitedArray.set = function(index, value) {
     checkLimit(index);
     storage[index] = value;

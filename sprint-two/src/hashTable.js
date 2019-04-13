@@ -9,13 +9,14 @@ HashTable.prototype.insert = function(k, v) {
   var index = getIndexBelowMaxForKey(k, this._limit);
   var tuple = [k, v]
   var bucket = [tuple];
-  if (!Array.isArray(this._storage[index])) {
+  // if bucket at index is empty
+  if (!Array.isArray(this._storage.get(index))) {
+    // add bucket to index with tuple in the bucket
     this._storage.set(index, bucket);
   } else {
+    // push the tuple to the already existing bucket
     var existingBucket = this._storage.get(index);
-    console.log(existingBucket);
     existingBucket.push(tuple);
-    //this._storage.set(index, existingBucket);
   }
 };
 
@@ -34,7 +35,7 @@ HashTable.prototype.remove = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
   // if only tuple in bucket
   var test = this._storage.get(index).length;
-  console.log(test);
+  // console.log(test);
   if (this._storage.get(index).length === 1){
     // delete tuple and bucket
     return this._storage.set(index, undefined);
